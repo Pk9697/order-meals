@@ -1,0 +1,11 @@
+.headercartbtn {
+	color: white;
+    background-color: rgb(101, 2, 2);
+    padding: 0.2em 3.25em;
+    border-radius: 20px;
+}
+
+.headercartbtn:hover{
+    cursor: pointer;
+    background-color: rgb(68, 0, 0);
+}
