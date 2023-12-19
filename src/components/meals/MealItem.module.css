@@ -1,0 +1,42 @@
+.meal-list {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	border-bottom: 1px solid lightgray;
+	padding: 1em 0;
+}
+
+.meal-list:last-child {
+	border-bottom: none;
+}
+.meal {
+	display: flex;
+	flex-direction: column;
+	gap: 6px;
+}
+.name {
+	margin: 0;
+	padding: 0;
+}
+.description {
+	font-style: italic;
+}
+.price {
+	color: #8a2b06;
+	font-weight: bold;
+}
+
+.form {
+	display: flex;
+	align-items: center;
+	gap: 6px;
+}
+
+.icon {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	cursor: pointer;
+	background-color: white;
+	border: none;
+}
