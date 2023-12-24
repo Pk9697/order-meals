@@ -22,7 +22,7 @@ function Cart({ open, handleClose }) {
 	const { items, totalAmount, reset } = useContext(CartContext)
 
 	const handleOrder = () => {
-		alert(`Your total bill is :$${totalAmount}`)
+		alert(`Your total bill is :$${totalAmount.toFixed(2)}`)
 		reset()
 		handleClose()
 	}
