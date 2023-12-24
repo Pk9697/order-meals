@@ -1,0 +1,37 @@
+.cart-item {
+    padding: 1em 0;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	border-bottom: 1px solid #8a2b06;
+}
+
+.meal{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap:2em;
+}
+
+.name {
+	margin: 0;
+	padding: 0;
+    margin-bottom: 0.5em;
+}
+
+.price {
+	color: #8a2b06;
+	font-weight: bold;
+}
+
+.quantity{
+    border: 1px solid lightgray;
+    padding: 0.25em 1em;
+    border-radius: 8px;
+	font-weight: bold;
+}
+
+.cart-item__btns{
+    display: flex;
+    gap:0.5em;
+}

@@ -5,3 +5,14 @@
 	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
 	border-radius: 14px;
 }
+
+.cart-total {
+	display: flex;
+	justify-content: space-between;
+}
+
+.cart-btns{
+	display: flex;
+	justify-content: end;
+	gap: 1em;
+}

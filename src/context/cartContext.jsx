@@ -14,22 +14,55 @@ const initialState = {
 const reducer = (state, action) => {
 	switch (action.type) {
 		case 'ADD': {
+			const existingItem = state.items.some(
+				(item) => item.id === action.payload.id
+			)
+			let updatedItems = []
+			if (existingItem) {
+				updatedItems = state.items.map((item) =>
+					item.id === action.payload.id
+						? { ...item, quantity: item.quantity + action.payload.quantity }
+						: item
+				)
+			} else {
+				updatedItems = [action.payload, ...state.items]
+			}
+
 			return {
 				...state,
-				items: [action.payload, ...state.items],
+				items: updatedItems,
 				totalAmount:
 					state.totalAmount + action.payload.price * action.payload.quantity,
 			}
 		}
 
 		case 'REMOVE': {
-            const existingItem = state.items.find((item) => item.id === action.payload)
-            if(!existingItem) return state
+			const existingItem = state.items.find(
+				(item) => item.id === action.payload
+			)
+			if (!existingItem) return state
+			const updatedItems = state.items.reduce(
+				(acc, curr) =>
+					curr.id === action.payload
+						? curr.quantity === 1
+							? acc
+							: [...acc, { ...curr, quantity: curr.quantity - 1 }]
+						: acc.concat(curr),
+				[]
+			)
+
 			return {
 				...state,
-				items: state.items.filter((item) => item.id !== action.payload),
-				totalAmount:
-					state.totalAmount - existingItem.price * existingItem.quantity,
+				items: updatedItems,
+				totalAmount: state.totalAmount - existingItem.price,
+			}
+		}
+
+		case 'RESET': {
+			return {
+				...state,
+				items: [],
+				totalAmount: 0,
 			}
 		}
 
@@ -49,10 +82,14 @@ function CartContextProvider({ children }) {
 		dispatch({ type: 'REMOVE', payload: itemId })
 	}
 
+	const reset = () => {
+		dispatch({ type: 'RESET' })
+	}
 	const values = {
 		...cartState,
 		addItem,
 		removeItem,
+		reset
 	}
 
 	return <CartContext.Provider value={values}>{children}</CartContext.Provider>
